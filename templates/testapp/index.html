@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'testapp/base.html' %}
+
+{% block body_block %}
+<h1>Employees information </h1>
+<hr>
+{% if employee %}
+
+<table border="2" >
+    <thead>
+    <th>Emp No</th>
+    <th>Emp Name</th>
+    <th>Emp Salary</th>
+    <th>Emp Address</th>
+    <th>Action</th>
+
+
+    </thead>
+    {% for i in employee %}
+    <tr>
+        <th>{{i.eno}}</th>
+        <th>{{i.ename}}</th>
+        <th>{{i.esal}}</th>
+        <th>{{i.eaddr}}</th>
+        <th><a href="/update/{{i.id}}" >Update</a> <a href="/delete/{{i.id}}">Delete</a></th>
+
+    </tr>
+     {% endfor %}
+</table>
+<br><br>
+<a href="insert" class="btn btn-success btn-lg">Insert new record </a>
+{% else %}
+<p>No employees found..</p>
+{% endif %}
+
+{% endblock %}
